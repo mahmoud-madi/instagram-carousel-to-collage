@@ -2040,3 +2040,33 @@ function showToast(message, type = 'info') {
     setTimeout(() => toast.remove(), 250);
   }, 3500);
 }
+
+// ==========================================
+// ❓ Interactive FAQ Hub Accordion & Search
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Accordion toggle
+  document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('active');
+    });
+  });
+
+  // FAQ Live Search Filter
+  const faqSearchInput = document.getElementById('faqSearchInput');
+  if (faqSearchInput) {
+    faqSearchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        if (!term || text.includes(term)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  }
+});
+

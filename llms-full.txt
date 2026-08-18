@@ -9,171 +9,109 @@
 
 ---
 
-## 1. System Architecture Overview
+## 1. System Architecture
 
 ```
-+-------------------------------------------------------------------------+
-|                          CLIENT (BROWSER / PWA)                        |
-|                                                                         |
-|  +-------------------+   +--------------------+   +------------------+  |
-|  |  URL Input / PWA  |-->| Unpacker Controller|-->| Preloader & CORS |  |
-|  |  Share Target     |   | State Manager      |   | In-Memory Cache  |  |
-|  +-------------------+   +--------------------+   +------------------+  |
-|                                     |                                   |
-|                                     v                                   |
-|                          +--------------------+                         |
-|                          | Canvas 2D Engine   |                         |
-|                          | (Matrix / Polaroid |                         |
-|                          |  Filmstrip / Wall) |                         |
-|                          +--------------------+                         |
-|                                     |                                   |
-|                 +-------------------+-------------------+               |
-|                 |                   |                   |               |
-|                 v                   v                   v               |
-|          +-------------+     +-------------+     +-------------+        |
-|          | High-DPI    |     | IndexedDB   |     | Multi-Slide |        |
-|          | PNG/JPEG    |     | Local Vault |     | ZIP Export  |        |
-|          | Export      |     | Persistence |     |             |        |
-|          +-------------+     +-------------+     +-------------+        |
-+-------------------------------------------------------------------------+
-                                     |
-                                HTTP / JSON
-                                     |
-+-------------------------------------------------------------------------+
-|                          SERVER (NODE.JS / EXPRESS)                    |
-|                                                                         |
-|  +--------------------+   +--------------------+   +-----------------+  |
-|  | /api/extract       |   | /api/proxy         |   | /api/download-  |  |
-|  | - SSR HTML Scraper |   | - SSRF Filter      |   |   zip           |  |
-|  | - Meta Graph Parser|   | - CORS Injector    |   | - Archiver Stream| |
-|  | - Dominant Cluster |   | - Universal Token  |   +-----------------+  |
-|  +--------------------+   +--------------------+                        |
-+-------------------------------------------------------------------------+
+[ User Browser / PWA ]
+        |
+        +---> Paste Instagram URL / Drag & Drop Local Files
+        |
+        v
+[ Backend Server (Node.js/Express) ]
+        |
+        +---> /api/extract (SSR crawler -> GraphQL/meta JSON resolver)
+        |       Extracts clean, uncropped slide URLs without 'stp=c'
+        |
+        +---> /api/proxy (SSRF-hardened upstream streaming proxy)
+        |       Blocks private IP ranges (127.0.0.1, 10.0.0.0/8, 192.168.0.0/16, 169.254.169.254)
+        |       Injects CORS headers to keep Canvas untainted
+        |
+        +---> /api/download-zip (In-memory multi-threaded zip archiver)
+        |
+        v
+[ Client Canvas Graphics Engine (HTML5 Canvas 2D) ]
+        |
+        +---> Coordinate Matrix Generator (Grid / Polaroid / Filmstrip / Masonry)
+        +---> Zero-Crop Aspect Ratio Math Resolver (Dominant 3:4, 4:5, 1:1, 9:16)
+        +---> Real-Time Pixel Grading & Color Filter Pipeline
+        +---> IndexedDB Local Vault Persistence
+        +---> High-DPI 4K PNG / JPEG / Clipboard Exporter
 ```
 
 ---
 
-## 2. Instagram Carousel Extraction Engine
+## 2. Mathematical Coordinate & Aspect Ratio Formulas
 
-### 2.1 Multi-Tier Extraction Flow
-1. **Tier 1: Server-Side Rendered (SSR) HTML Crawler**:
-   - Fetches `https://www.instagram.com/p/{shortcode}/` with crawler user agents (`facebookexternalhit/1.1` and `Googlebot/2.1`).
-   - Parses regex candidates matching Meta CDN patterns `https://.../v/t51.[0-9.-]+/...`.
-   - Decodes Unicode entities (`\u0026` -> `&`, `&amp;` -> `&`).
-   - Filters out profile avatars (`t51.2885-19`, `t51.82787-19`, `t51.75761-19`).
-2. **Tier 2: Zero-Crop Variant Selection**:
-   - Rejects thumbnail URLs containing `stp=c[0-9.]+` (Instagram square-cropped thumbnails).
-   - Groups candidates by parent media ID (`t51.../[0-9]+_{ID}`).
-   - Retains uncropped original resolutions (`dst-jpg_e35`, `960x1280`, `1080x1350`).
-3. **Tier 3: Dominant Cluster Identification**:
-   - Identifies the common media sequence prefix (e.g. `1812561...`).
-   - Sorts items by numeric sequence ID so slides appear in exact 1-to-N carousel order.
-4. **Tier 4: Universal CDN Routing**:
-   - Selects `scontent.cdninstagram.com` tokens ensuring no `403 Forbidden` errors across worldwide edge networks.
+### Dominant Aspect Ratio Calculation
+Given $N$ slides with natural widths $W_i$ and heights $H_i$:
+$$r_i = \frac{W_i}{H_i}$$
+$$\text{dominantRatio} = \text{median}(\{r_1, r_2, \dots, r_N\})$$
 
----
+### Matrix Grid Tile Placement
+For grid column index $c \in [0, \text{cols}-1]$ and row index $r \in [0, \text{rows}-1]$:
+$$\text{tileWidth} = \frac{\text{canvasWidth} - 2 \cdot \text{padding} - (\text{cols} - 1) \cdot \text{gap}}{\text{cols}}$$
+$$\text{tileHeight} = \frac{\text{canvasHeight} - 2 \cdot \text{padding} - (\text{rows} - 1) \cdot \text{gap}}{\text{rows}}$$
+$$x_{c} = \text{padding} + c \cdot (\text{tileWidth} + \text{gap})$$
+$$y_{r} = \text{padding} + r \cdot (\text{tileHeight} + \text{gap})$$
 
-## 3. HTML5 Canvas 2D Mathematics & Geometry Engine
-
-### 3.1 Adaptive Aspect Ratio Math
-Given $N$ active slides with average aspect ratio $R = \frac{1}{N}\sum \frac{w_i}{h_i}$, grid columns $C$, and rows $K$:
-
-$$\text{tileW} = \text{base} \times R$$
-$$\text{tileH} = \text{base}$$
-$$\text{rawW} = 2 \times P + (C - 1) \times G + C \times \text{tileW}$$
-$$\text{rawH} = 2 \times P + (K - 1) \times G + K \times \text{tileH}$$
-$$\text{scale} = \frac{\text{resolution}}{\max(\text{rawW}, \text{rawH})}$$
-$$\text{canvasWidth} = \text{round}(\text{rawW} \times \text{scale})$$
-$$\text{canvasHeight} = \text{round}(\text{rawH} \times \text{scale})$$
-
-Where:
-- $P$: Outer canvas margin padding (px).
-- $G$: Tile divider gap (px).
-- $\text{resolution}$: User-selected high-DPI rendering buffer (1080, 2160, 4320).
-
-### 3.2 Polaroid Scrapbook Math
-Each slide is calculated with an organic pseudorandom tilt angle $\theta_i$ derived from its index:
-
-$$\theta_i = \sin(i \times 1.7) \times \theta_{\max}$$
-$$\text{cardW} = \text{tileW} + 2 \times \text{border}$$
-$$\text{cardH} = \text{tileH} + \text{border} + \text{chinHeight}$$
-
-The canvas applies:
-1. `ctx.translate(cx, cy)`
-2. `ctx.rotate(\theta_i)`
-3. Draws solid white card background with soft shadow (`rgba(0,0,0,0.4)`).
-4. Renders photo inside card bounds.
-5. Inscribes slide index and metadata in handwritten script on the bottom chin.
-
-### 3.3 Cinema Filmstrip Math
-Calculates continuous 35mm film borders:
-- Top and bottom sprockets rendered at interval $\Delta x$:
-  $$\text{sprocketW} = 12 \times S, \quad \text{sprocketH} = 18 \times S, \quad \text{spacing} = 28 \times S$$
-- Kodak frame markings: `KODAK 400TX`, `SAFETY FILM`, frame numerals `01A`, `02A`, `...`.
+### Center-Crop Image Fitting (Zero-Letterbox)
+To fit an image of natural dimensions $(w_{\text{img}}, h_{\text{img}})$ inside tile $(w_{\text{tile}}, h_{\text{tile}})$:
+$$s = \max\left(\frac{w_{\text{tile}}}{w_{\text{img}}}, \frac{h_{\text{tile}}}{h_{\text{img}}}\right)$$
+$$\text{srcWidth} = \frac{w_{\text{tile}}}{s},\quad \text{srcHeight} = \frac{h_{\text{tile}}}{s}$$
+$$\text{srcX} = \frac{w_{\text{img}} - \text{srcWidth}}{2},\quad \text{srcY} = \frac{h_{\text{img}} - \text{srcHeight}}{2}$$
 
 ---
 
-## 4. SSRF Security Architecture (`server.js`)
+## 3. REST API Specification
 
-All outbound requests through `/api/proxy` are inspected by `isSafeMediaUrl(rawUrl)`:
-- Rejects non-HTTP/HTTPS protocols.
-- Rejects `localhost`, `127.0.0.1`, `0.0.0.0`, `::1`.
-- Rejects private IP ranges:
-  - `10.0.0.0/8`
-  - `172.16.0.0/12`
-  - `192.168.0.0/16`
-  - `169.254.169.254` (Cloud Instance Metadata Service)
-- Whitelists only verified media hosts (`*.cdninstagram.com`, `*.fbcdn.net`, `*.instagram.com`, `images.unsplash.com`).
+### Endpoint: `POST /api/extract`
+Extracts individual slide URLs and metadata from an Instagram URL.
 
----
+**Request Body:**
+```json
+{
+  "url": "https://www.instagram.com/p/Db-QrfGjDFd/"
+}
+```
 
-## 5. IndexedDB Storage Schema
-
-- **Database Name**: `InstaCollageVault`
-- **Version**: `1`
-- **Object Store**: `carousels`
-- **Key Path**: `shortcode`
-- **Record Schema**:
-```typescript
-interface VaultCarouselRecord {
-  shortcode: string;
-  savedAt: number; // Unix timestamp
-  caption: string;
-  likesCount: string;
-  postedAt: string;
-  author: {
-    username: string;
-    fullName: string;
-    profilePic: string;
-    isVerified: boolean;
-  };
-  slides: Array<{
-    slideIndex: number;
-    originalUrl: string;
-    thumbnailUrl: string;
-    aspectRatio: number;
-    isVideo: boolean;
-    title: string;
-  }>;
+**Response Body (200 OK):**
+```json
+{
+  "success": true,
+  "shortcode": "Db-QrfGjDFd",
+  "author": "instagram_creator",
+  "caption": "Aesthetic travel recap 2026",
+  "slideCount": 10,
+  "slides": [
+    {
+      "index": 0,
+      "type": "image",
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/...",
+      "width": 1080,
+      "height": 1350,
+      "aspectRatio": 0.8
+    }
+  ]
 }
 ```
 
 ---
 
-## 6. Verification and Test Suite
+## 4. SSRF Security Policy
 
-Running `npm test` or `node test_verification.js` validates:
-1. Health endpoint (`/api/health`)
-2. Static shell assets (`/`, `/styles.css`, `/app.js`, `/manifest.json`, `/sw.js`, `/icons/icon-192.png`)
-3. All 5 demo preset categories (`architecture`, `fashion`, `tech`, `travel`, `food`)
-4. Media proxy CORS header injection & streaming
-5. SSRF validation & intranet block verification
-6. Live scraper crawler extraction
-7. In-memory ZIP archive generation
+The proxy endpoint `/api/proxy?url=<target>` strictly validates the destination hostname and IP before initiating any network request:
+- Rejects any non-HTTP(S) protocol.
+- Rejects loopback (`127.0.0.0/8`, `::1`, `localhost`).
+- Rejects private subnets:
+  - `10.0.0.0/8`
+  - `172.16.0.0/12`
+  - `192.168.0.0/16`
+  - `169.254.169.254` (Cloud Instance Metadata Service)
+- Blocks internal DNS names resolving to private IPs.
 
 ---
 
-## 7. Developer Credits & Attribution
+## 5. Developer Credits & Attribution
 - **Developer**: Mahmoud Madi
 - **GitHub**: https://github.com/mahmoud-madi
 - **Powered by**: Premier Tech & Voxo AI

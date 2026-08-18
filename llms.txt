@@ -11,7 +11,7 @@
 ---
 
 ## 🎯 What It Does
-InstaCollage Studio allows users to input any public Instagram carousel URL (or use native mobile Web Share Target), extracts all individual high-resolution slides (photos/videos) without cropping, and renders them onto customizable, high-DPI photo collages, Polaroid scrapbook moodboards, and cinematic filmstrips in real time.
+InstaCollage allows users to input any public Instagram carousel URL (or use native mobile Web Share Target), extracts all individual high-resolution slides without cropping, and renders them onto customizable, high-DPI photo collages, Polaroid scrapbook moodboards, and cinematic filmstrips in real time.
 
 ---
 
@@ -22,7 +22,7 @@ InstaCollage Studio allows users to input any public Instagram carousel URL (or 
 4. **Artistic Collage Modes**:
    - Standard Responsive Grid Matrix (1 to 6 columns / rows)
    - Polaroid Scrapbook (Organic tilt rotations, white photo borders, and drop shadows)
-   - Cinema Filmstrip (Kodak/Fuji perforations, frame counters, and date stamps)
+   - Cinema 35mm Filmstrip (Kodak/Fuji perforations, frame counters, and date stamps)
    - Masonry Flow (Dynamic pin-style photo wall)
 5. **Color & Aesthetic Filters**: Real-time canvas pixel grading (Vivid, 90s Vintage, Kodak Sepia, Cyber Mono, Dramatic Noir, Pastel Fade).
 6. **Local IndexedDB Vault**: Persistent local offline history drawer for quick re-rendering and bulk exporting.
@@ -33,8 +33,8 @@ InstaCollage Studio allows users to input any public Instagram carousel URL (or 
 ## 🚀 Fast Start
 ```bash
 # Clone the repository
-git clone https://github.com/mahmoud-madi/instacollage-studio.git
-cd instacollage-studio
+git clone https://github.com/mahmoud-madi/instagram-carousel-to-collage.git
+cd instagram-carousel-to-collage
 
 # Install dependencies
 npm install
@@ -46,19 +46,11 @@ npm start
 
 ---
 
-## 📡 API Endpoints
-- `POST /api/extract`: Accepts `{ url: "https://www.instagram.com/p/SHORTCODE/" }` and returns uncropped slide metadata.
-- `GET /api/proxy?url={ENCODED_URL}`: SSRF-safe CORS-enabled image streaming.
-- `POST /api/download-zip`: Accepts slide URLs and streams an in-memory `.zip` archive.
-- `GET /api/sample/:category`: Returns instant curated demo carousels (`architecture`, `fashion`, `tech`, `travel`, `food`).
-- `GET /api/health`: Uptime and system status probe.
-
----
-
-## 📁 Key File Locations
-- [`server.js`](server.js): Express backend, scraper engine, SSRF proxy, and ZIP stream.
-- [`public/app.js`](public/app.js): HTML5 Canvas math engine, matrix geometry, state management, IndexedDB.
-- [`public/styles.css`](public/styles.css): Dark glassmorphism design system, responsive HUD, and animations.
-- [`public/index.html`](public/index.html): Semantic PWA shell with toolbars, HUD, and modal dialogs.
-- [`public/sw.js`](public/sw.js): Progressive Web App service worker with offline caching.
-- [`test_verification.js`](test_verification.js): Comprehensive 16-point automated verification suite.
+## 📚 Key Reference Documents
+- **`README.md`**: Complete project overview, screenshots, layout mode table, and deployment instructions.
+- **`FEATURES.md`**: Deep feature matrix, capabilities, and benchmarks.
+- **`KEYWORDS.md`**: Comprehensive 2,500+ SEO, GEO, and search intent taxonomy.
+- **`QUESTIONS.md`**: In-depth 50+ question and answer knowledge base.
+- **`SEO_INDEXING_PLAYBOOK.md`**: Master checklist for Google Search Console, Bing Webmaster, and AI search indexing.
+- **`llms-full.txt`**: Complete architectural and mathematical context for AI assistants.
+- **`CITATION.cff`**: Academic and developer citation metadata.
