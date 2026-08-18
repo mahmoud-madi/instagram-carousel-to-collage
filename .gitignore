@@ -1,0 +1,28 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & local settings
+.env
+.env.local
+
+# Logs and runtime data
+*.log
+logs/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Editor & IDE files
+.vscode/
+.idea/
+
+# Backup and temp files
+*.zip
+*.tar.gz
+instacollage-studio-backup*
+instagram_page_raw.html
+test_scratch*.js

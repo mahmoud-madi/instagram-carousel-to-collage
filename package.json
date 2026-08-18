@@ -1,0 +1,49 @@
+{
+  "name": "instacollage-studio",
+  "version": "2.0.0",
+  "description": "Production-grade Progressive Web App to unpack Instagram carousels into high-DPI collages, polaroid moodboards, and filmstrips using HTML5 Canvas.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test_verification.js"
+  },
+  "keywords": [
+    "instagram",
+    "instagram-carousel",
+    "carousel-unpacker",
+    "photo-collage",
+    "html5-canvas",
+    "pwa",
+    "moodboard",
+    "polaroid-scrapbook",
+    "filmstrip",
+    "masonry-grid",
+    "ssrf-proxy",
+    "mahmoud-madi",
+    "premier-tech",
+    "voxo-ai",
+    "indexeddb"
+  ],
+  "author": {
+    "name": "Mahmoud Madi",
+    "url": "https://github.com/mahmoud-madi"
+  },
+  "organization": {
+    "poweredBy": [
+      "Premiere Tech",
+      "Voxo AI"
+    ]
+  },
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

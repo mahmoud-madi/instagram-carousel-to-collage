@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#405de6"/>
+      <stop offset="25%" stop-color="#5851db"/>
+      <stop offset="50%" stop-color="#833ab4"/>
+      <stop offset="75%" stop-color="#c13584"/>
+      <stop offset="90%" stop-color="#e1306c"/>
+      <stop offset="100%" stop-color="#fd1d1d"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdc80" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fcb045" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="tileShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base with Rounded Corners -->
+  <rect width="512" height="512" rx="128" fill="#0b0e17"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#bgGrad)" filter="url(#dropShadow)" opacity="0.95"/>
+
+  <!-- Glowing Aura Accent -->
+  <circle cx="400" cy="112" r="140" fill="url(#glowGrad)" filter="blur(40px)" opacity="0.6"/>
+
+  <!-- 4-Grid Collage Matrix Center Motif -->
+  <g transform="translate(106, 106)">
+    <!-- Tile 1 (Top Left) -->
+    <rect x="0" y="0" width="140" height="140" rx="28" fill="#ffffff" fill-opacity="0.95" filter="url(#tileShadow)"/>
+    <circle cx="70" cy="70" r="32" fill="#833ab4"/>
+    
+    <!-- Tile 2 (Top Right) -->
+    <rect x="160" y="0" width="140" height="140" rx="28" fill="#ffffff" fill-opacity="0.9" filter="url(#tileShadow)"/>
+    <rect x="185" y="25" width="90" height="90" rx="16" fill="#e1306c"/>
+
+    <!-- Tile 3 (Bottom Left) -->
+    <rect x="0" y="160" width="140" height="140" rx="28" fill="#ffffff" fill-opacity="0.9" filter="url(#tileShadow)"/>
+    <path d="M 30 260 L 70 200 L 105 240 L 120 220 L 140 260 Z" fill="#fd1d1d"/>
+
+    <!-- Tile 4 (Bottom Right - Sparkling Star) -->
+    <rect x="160" y="160" width="140" height="140" rx="28" fill="#ffffff" fill-opacity="0.95" filter="url(#tileShadow)"/>
+    <path d="M 230 185 Q 230 230 275 230 Q 230 230 230 275 Q 230 230 185 230 Q 230 230 230 185 Z" fill="#fcb045"/>
+  </g>
+
+  <!-- Cinema Reel / Carousel Indicator Dots -->
+  <g transform="translate(196, 435)">
+    <circle cx="0" cy="0" r="8" fill="#ffffff" fill-opacity="0.9"/>
+    <circle cx="30" cy="0" r="8" fill="#ffffff" fill-opacity="0.5"/>
+    <circle cx="60" cy="0" r="8" fill="#ffffff" fill-opacity="0.5"/>
+    <circle cx="90" cy="0" r="8" fill="#ffffff" fill-opacity="0.5"/>
+    <circle cx="120" cy="0" r="8" fill="#ffffff" fill-opacity="0.5"/>
+  </g>
+</svg>

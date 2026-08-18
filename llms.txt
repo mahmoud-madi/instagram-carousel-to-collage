@@ -1,0 +1,63 @@
+# InstaCollage Studio & CarouselVault
+> High-performance Progressive Web App (PWA) to unpack Instagram carousels into high-DPI collages, polaroid moodboards, and filmstrips using HTML5 Canvas.
+
+- **Developer**: Mahmoud Madi (https://github.com/mahmoud-madi)
+- **Powered by**: Premiere Tech & Voxo AI
+- **Repository Type**: Open-Source Web Application & API
+- **License**: MIT
+- **Tech Stack**: Vanilla JavaScript (ES6+), HTML5 Canvas 2D API, Node.js, Express, CSS3 Glassmorphism, IndexedDB, JSZip.
+
+---
+
+## 🎯 What It Does
+InstaCollage Studio allows users to input any public Instagram carousel URL (or use native mobile Web Share Target), extracts all individual high-resolution slides (photos/videos) without cropping, and renders them onto customizable, high-DPI photo collages, Polaroid scrapbook moodboards, and cinematic filmstrips in real time.
+
+---
+
+## 🔑 Core Features
+1. **Multi-Tier Scraper**: SSR HTML crawler and meta graph fallback extracting uncropped 3:4, 4:5, 1:1, and 9:16 portrait images.
+2. **SSRF-Hardened CORS Media Proxy**: Secure upstream image streaming with private IP rejection (`127.0.0.1`, `10.0.0.0/8`, `192.168.0.0/16`, AWS metadata `169.254.169.254`).
+3. **Adaptive Canvas Aspect Ratio Engine**: Calculates dynamic canvas and tile dimensions to match slide aspect ratios with zero unwanted bars and zero cropping.
+4. **Artistic Collage Modes**:
+   - Standard Responsive Grid Matrix (1 to 6 columns / rows)
+   - Polaroid Scrapbook (Organic tilt rotations, white photo borders, and drop shadows)
+   - Cinema Filmstrip (Kodak/Fuji perforations, frame counters, and date stamps)
+   - Masonry Flow (Dynamic pin-style photo wall)
+5. **Color & Aesthetic Filters**: Real-time canvas pixel grading (Vivid, 90s Vintage, Kodak Sepia, Cyber Mono, Dramatic Noir, Pastel Fade).
+6. **Local IndexedDB Vault**: Persistent local offline history drawer for quick re-rendering and bulk exporting.
+7. **High-DPI Ultra 4K Exporter**: Lossless PNG, high-res JPEG with custom compression, native clipboard copy, and server-side multi-threaded ZIP archiving.
+
+---
+
+## 🚀 Fast Start
+```bash
+# Clone the repository
+git clone https://github.com/mahmoud-madi/instacollage-studio.git
+cd instacollage-studio
+
+# Install dependencies
+npm install
+
+# Start local server
+npm start
+# -> Studio is live at http://localhost:3300
+```
+
+---
+
+## 📡 API Endpoints
+- `POST /api/extract`: Accepts `{ url: "https://www.instagram.com/p/SHORTCODE/" }` and returns uncropped slide metadata.
+- `GET /api/proxy?url={ENCODED_URL}`: SSRF-safe CORS-enabled image streaming.
+- `POST /api/download-zip`: Accepts slide URLs and streams an in-memory `.zip` archive.
+- `GET /api/sample/:category`: Returns instant curated demo carousels (`architecture`, `fashion`, `tech`, `travel`, `food`).
+- `GET /api/health`: Uptime and system status probe.
+
+---
+
+## 📁 Key File Locations
+- [`server.js`](server.js): Express backend, scraper engine, SSRF proxy, and ZIP stream.
+- [`public/app.js`](public/app.js): HTML5 Canvas math engine, matrix geometry, state management, IndexedDB.
+- [`public/styles.css`](public/styles.css): Dark glassmorphism design system, responsive HUD, and animations.
+- [`public/index.html`](public/index.html): Semantic PWA shell with toolbars, HUD, and modal dialogs.
+- [`public/sw.js`](public/sw.js): Progressive Web App service worker with offline caching.
+- [`test_verification.js`](test_verification.js): Comprehensive 16-point automated verification suite.
