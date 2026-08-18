@@ -13,7 +13,7 @@
   [![CI Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](.github/workflows/ci.yml)
 
   <p align="center">
-    <strong>Developed by <a href="https://github.com/mahmoud-madi">Mahmoud Madi</a></strong> • <strong>Powered by Premiere Tech & Voxo AI</strong>
+    <strong>Developed by <a href="https://github.com/mahmoud-madi">Mahmoud Madi</a></strong> • <strong>Powered by Premier Tech & Voxo AI</strong>
   </p>
 
   <p align="center">
@@ -235,7 +235,7 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
 ## 👨‍💻 Author & Credits
 
 - **Architect & Lead Developer**: **[Mahmoud Madi](https://github.com/mahmoud-madi)**
-- **Powered by**: **Premiere Tech** & **Voxo AI**
+- **Powered by**: **Premier Tech** & **Voxo AI**
 
 ---
 
@@ -244,5 +244,5 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct]
 Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
 
 <div align="center">
-  <sub>Built with ❤️ by Mahmoud Madi • Powered by Premiere Tech & Voxo AI</sub>
+  <sub>Built with ❤️ by Mahmoud Madi • Powered by Premier Tech & Voxo AI</sub>
 </div>

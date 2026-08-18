@@ -56,4 +56,4 @@ Thank you for your interest in contributing to **InstaCollage Studio**! We welco
 ## ⚖️ License & Attribution
 
 By contributing to InstaCollage Studio, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
-Project led by **Mahmoud Madi**, powered by **Premiere Tech & Voxo AI**.
+Project led by **Mahmoud Madi**, powered by **Premier Tech & Voxo AI**.

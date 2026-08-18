@@ -3,7 +3,7 @@
  * InstaCollage Studio & CarouselVault PWA
  * ----------------------------------------------------------------------------
  * Developed by: Mahmoud Madi (https://github.com/mahmoud-madi)
- * Powered by: Premiere Tech & Voxo AI
+ * Powered by: Premier Tech & Voxo AI
  * License: MIT
  * ----------------------------------------------------------------------------
  * HTML5 Canvas Mathematical Graphics Engine, Layout Matrix & State Controller

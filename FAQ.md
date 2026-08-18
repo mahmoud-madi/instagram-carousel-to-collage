@@ -40,4 +40,4 @@ The studio will immediately be available at `http://localhost:3300`.
 ---
 
 ### 7. Who developed this project?
-InstaCollage Studio was developed by **Mahmoud Madi** ([GitHub](https://github.com/mahmoud-madi)) and is powered by **Premiere Tech** & **Voxo AI**.
+InstaCollage Studio was developed by **Mahmoud Madi** ([GitHub](https://github.com/mahmoud-madi)) and is powered by **Premier Tech** & **Voxo AI**.

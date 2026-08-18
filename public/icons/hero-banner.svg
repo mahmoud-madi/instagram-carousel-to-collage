@@ -80,7 +80,7 @@
     <g transform="translate(0, 205)">
       <rect width="440" height="42" rx="12" fill="rgba(20, 27, 45, 0.8)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" />
       <text x="20" y="26" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">
-        Developed by <tspan fill="#ffffff" font-weight="700">Mahmoud Madi</tspan> • Powered by <tspan fill="#38bdf8" font-weight="700">Premiere Tech & Voxo AI</tspan>
+        Developed by <tspan fill="#ffffff" font-weight="700">Mahmoud Madi</tspan> • Powered by <tspan fill="#38bdf8" font-weight="700">Premier Tech & Voxo AI</tspan>
       </text>
     </g>
   </g>

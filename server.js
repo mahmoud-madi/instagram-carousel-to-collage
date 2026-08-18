@@ -3,7 +3,7 @@
  * InstaCollage Studio & CarouselVault Server
  * ----------------------------------------------------------------------------
  * Developed by: Mahmoud Madi (https://github.com/mahmoud-madi)
- * Powered by: Premiere Tech & Voxo AI
+ * Powered by: Premier Tech & Voxo AI
  * License: MIT
  * ----------------------------------------------------------------------------
  * High-performance backend server providing:

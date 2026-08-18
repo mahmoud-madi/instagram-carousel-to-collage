@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Polaroid Scrapbook & Filmstrip Layouts**: 35mm film sprockets, Kodak markings, handwritten polaroid chins, and masonry wall layouts.
 - **Local IndexedDB Vault**: Persistent offline carousel drawer with replay and bulk export.
 - **High-DPI Ultra 4K Exporter**: Lossless PNG, high-resolution JPEG, clipboard copy, and server-side multi-threaded ZIP packaging.
-- **Open-Source Suite**: Full developer attribution ("Developed by Mahmoud Madi • Powered by Premiere Tech & Voxo AI"), Docker containerization, GitHub CI workflows, `llms.txt`, and `FAQ.md`.
+- **Open-Source Suite**: Full developer attribution ("Developed by Mahmoud Madi • Powered by Premier Tech & Voxo AI"), Docker containerization, GitHub CI workflows, `llms.txt`, and `FAQ.md`.
 
 ---
 

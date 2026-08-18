@@ -2,7 +2,7 @@
 > Comprehensive LLM Context, Architecture Manual, Data Models, Math Formulas, and API Contracts.
 
 - **Developer**: Mahmoud Madi (https://github.com/mahmoud-madi)
-- **Powered by**: Premiere Tech & Voxo AI
+- **Powered by**: Premier Tech & Voxo AI
 - **Repository**: https://github.com/mahmoud-madi/instacollage-studio
 - **License**: MIT
 - **Architecture**: Modular Client-Server Architecture (Pure JS/Canvas Frontend + Express/SSRF-Proxy Backend)
@@ -176,5 +176,5 @@ Running `npm test` or `node test_verification.js` validates:
 ## 7. Developer Credits & Attribution
 - **Developer**: Mahmoud Madi
 - **GitHub**: https://github.com/mahmoud-madi
-- **Powered by**: Premiere Tech & Voxo AI
+- **Powered by**: Premier Tech & Voxo AI
 - **License**: MIT
