@@ -718,6 +718,49 @@
       </div>
     </div>
 
+    <!-- Static Host Crawler Notice Modal -->
+    <div class="modal-backdrop hidden" id="crawlerNoticeModalBackdrop">
+      <div class="modal-card glass-panel" id="crawlerNoticeModal">
+        <div class="modal-header">
+          <div class="modal-title">
+            <i class="fa-solid fa-bolt gradient-icon"></i>
+            <span>Live Instagram Unpacker Notice</span>
+          </div>
+          <button class="btn-modal-close" id="btnCloseCrawlerNoticeModal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 16px;">
+            You are viewing the <strong>Static GitHub Pages Demo</strong>. Because Instagram blocks direct in-browser requests via strict CORS & bot policies, live post extraction requires running the backend proxy crawler engine.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <strong style="font-size: 0.85rem; color: #fff;">1. Test with High-Res Demo Carousels</strong>
+                <p style="font-size: 0.76rem; color: var(--text-muted);">Explore 5 complete sets with zero setup</p>
+              </div>
+              <button class="btn btn-gradient btn-sm" id="btnCrawlerTryDemo">Load Demo</button>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <strong style="font-size: 0.85rem; color: #fff;">2. Collage Your Own Photos Directly</strong>
+                <p style="font-size: 0.76rem; color: var(--text-muted);">Drag and drop any batch of images</p>
+              </div>
+              <button class="btn btn-glass btn-sm" id="btnCrawlerUploadLocal">Upload Photos</button>
+            </div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-medium); border-radius: 10px; padding: 12px;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">3. Or Run Live Scraper Locally (1 Command):</div>
+            <code style="font-family: monospace; font-size: 0.8rem; color: #f8fafc; background: rgba(255,255,255,0.08); padding: 6px 10px; border-radius: 6px; display: block; overflow-x: auto;">npx instagram-carousel-to-collage</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- About Studio Modal -->
     <div class="modal-backdrop hidden" id="aboutModalBackdrop">
       <div class="modal-card modal-card-about glass-panel" id="aboutModal">

@@ -578,9 +578,20 @@ function initEventListeners() {
     showToast('Canvas parameters reset', 'info');
   });
 
-  // 14. Modals (About, Upload, Vault)
+  // 14. Modals (About, Upload, Vault, Crawler Notice)
   setupModal('btnOpenAbout', 'btnCloseAboutModal', 'aboutModalBackdrop');
   setupModal('btnUploadLocal', 'btnCloseUploadModal', 'uploadModalBackdrop');
+  setupModal(null, 'btnCloseCrawlerNoticeModal', 'crawlerNoticeModalBackdrop');
+
+  document.getElementById('btnCrawlerTryDemo')?.addEventListener('click', () => {
+    document.getElementById('crawlerNoticeModalBackdrop')?.classList.add('hidden');
+    loadDemoCarousel('architecture');
+  });
+
+  document.getElementById('btnCrawlerUploadLocal')?.addEventListener('click', () => {
+    document.getElementById('crawlerNoticeModalBackdrop')?.classList.add('hidden');
+    document.getElementById('uploadModalBackdrop')?.classList.remove('hidden');
+  });
 
   const btnOpenVault = document.getElementById('btnOpenVault');
   const btnCloseVault = document.getElementById('btnCloseVault');
@@ -761,9 +772,13 @@ async function unpackInstagramCarousel(url) {
 
     throw new Error('Static host fallback');
   } catch (err) {
-    // If backend is not available (e.g. running on static GitHub Pages), load rich demo fallback
-    showToast('Static host mode: Loaded high-res demo showcase. Run locally with Node/Docker for live link extraction!', 'info');
-    loadDemoCarousel('architecture');
+    // Show static host crawler notice modal
+    const crawlerModal = document.getElementById('crawlerNoticeModalBackdrop');
+    if (crawlerModal) {
+      crawlerModal.classList.remove('hidden');
+    } else {
+      showToast('Static GitHub Pages Demo: Live link extraction requires local proxy. Load demo or upload photos!', 'info');
+    }
   } finally {
     if (progressFill) progressFill.style.width = '100%';
     setTimeout(() => {
