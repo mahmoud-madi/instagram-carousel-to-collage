@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use InstaCollage in your research or project, please cite it as below."
+authors:
+  - family-names: "Madi"
+    given-names: "Mahmoud"
+    orcid: ""
+    affiliation: "Premier Tech & Voxo AI"
+title: "InstaCollage: Instagram Posts & Carousels to Ready Collages in 1 Click"
+version: 2.0.0
+date-released: 2026-08-18
+url: "https://github.com/mahmoud-madi/instagram-carousel-to-collage"
+repository-code: "https://github.com/mahmoud-madi/instagram-carousel-to-collage"
+keywords:
+  - "instagram"
+  - "carousel"
+  - "photo collage"
+  - "html5 canvas"
+  - "pwa"
+  - "moodboard"
+  - "polaroid"
+  - "filmstrip"
+  - "image processing"
+  - "ssrf proxy"
+  - "javascript"
+  - "open source"
+license: "MIT"

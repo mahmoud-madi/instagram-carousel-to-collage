@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="./public/icons/hero-banner.svg" alt="InstaCollage Hero Banner" width="100%" />
+  <img src="assets/banner.png" alt="InstaCollage Hero Banner" width="100%" />
 
   # 📸 InstaCollage — Instagram Posts & Carousels to Ready Collages in 1 Click
   
@@ -18,11 +18,12 @@
 
   <p align="center">
     <a href="#-quick-start">Quick Start</a> •
-    <a href="#-key-features">Key Features</a> •
-    <a href="#-artistic-layout-modes">Artistic Modes</a> •
+    <a href="#-visual-showcase">Visual Showcase</a> •
+    <a href="FEATURES.md">Features Spec</a> •
+    <a href="KEYWORDS.md">SEO Keywords</a> •
+    <a href="QUESTIONS.md">Knowledge Base (FAQ)</a> •
     <a href="#-architecture">Architecture</a> •
     <a href="#-docker-deployment">Docker</a> •
-    <a href="#-api-reference">API Reference</a> •
     <a href="#-credits--license">Credits & License</a>
   </p>
 
@@ -59,24 +60,24 @@ Built with **HTML5 Canvas 2D API**, **Vanilla ES6+ JavaScript**, **IndexedDB per
 
 <div align="center">
   <h3>✨ Responsive Matrix Grid & Studio Interface</h3>
-  <img src="./public/screenshots/grid-matrix-preview.jpg" alt="InstaCollage Grid Matrix Preview" width="100%" />
+  <img src="assets/screenshots/grid-matrix-preview.jpg" alt="InstaCollage Grid Matrix Preview" width="100%" />
   <br/><br/>
   
   <table width="100%">
     <tr>
       <td width="50%" align="center">
         <h4>🎞️ Cinema 35mm Filmstrip Mode</h4>
-        <img src="./public/screenshots/cinema-filmstrip-preview.jpg" alt="Cinema Filmstrip Mode" width="100%" />
+        <img src="assets/screenshots/cinema-filmstrip-preview.jpg" alt="Cinema Filmstrip Mode" width="100%" />
       </td>
       <td width="50%" align="center">
         <h4>📷 Polaroid Scrapbook Mode</h4>
-        <img src="./public/screenshots/polaroid-scrapbook-preview.jpg" alt="Polaroid Scrapbook Mode" width="100%" />
+        <img src="assets/screenshots/polaroid-scrapbook-preview.jpg" alt="Polaroid Scrapbook Mode" width="100%" />
       </td>
     </tr>
     <tr>
       <td colspan="2" align="center">
         <h4>ℹ️ About Studio & Developer Info</h4>
-        <img src="./public/screenshots/about-modal-preview.jpg" alt="About Studio Modal" width="70%" />
+        <img src="assets/screenshots/about-modal-preview.jpg" alt="About Studio Modal" width="70%" />
       </td>
     </tr>
   </table>
