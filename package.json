@@ -1,7 +1,7 @@
 {
-  "name": "instacollage-studio",
+  "name": "instagram-carousel-to-collage",
   "version": "2.0.0",
-  "description": "Production-grade Progressive Web App to unpack Instagram carousels into high-DPI collages, polaroid moodboards, and filmstrips using HTML5 Canvas.",
+  "description": "Instagram Posts & Carousels to Ready Collages in One Click — High-DPI Canvas Graphics Suite & Carousel Vault PWA",
   "main": "server.js",
   "type": "module",
   "scripts": {

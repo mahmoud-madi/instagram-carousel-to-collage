@@ -1,8 +1,9 @@
-# InstaCollage Studio & CarouselVault
-> High-performance Progressive Web App (PWA) to unpack Instagram carousels into high-DPI collages, polaroid moodboards, and filmstrips using HTML5 Canvas.
+# InstaCollage — Instagram Posts & Carousels to Ready Collages in 1 Click
+> High-performance Progressive Web App (PWA) to turn Instagram posts and multi-slide carousels into studio-ready photo collages, polaroid moodboards, and filmstrips in one click.
 
 - **Developer**: Mahmoud Madi (https://github.com/mahmoud-madi)
 - **Powered by**: Premier Tech & Voxo AI
+- **Repository**: https://github.com/mahmoud-madi/instagram-carousel-to-collage
 - **Repository Type**: Open-Source Web Application & API
 - **License**: MIT
 - **Tech Stack**: Vanilla JavaScript (ES6+), HTML5 Canvas 2D API, Node.js, Express, CSS3 Glassmorphism, IndexedDB, JSZip.

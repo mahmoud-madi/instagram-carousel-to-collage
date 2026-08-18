@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * InstaCollage Studio & CarouselVault Server
+ * InstaCollage — Instagram Posts & Carousels to Ready Collages in 1 Click
  * ----------------------------------------------------------------------------
  * Developed by: Mahmoud Madi (https://github.com/mahmoud-madi)
  * Powered by: Premier Tech & Voxo AI

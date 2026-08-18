@@ -1,10 +1,10 @@
 <div align="center">
 
-  <img src="./public/icons/hero-banner.svg" alt="InstaCollage Studio Hero Banner" width="100%" />
+  <img src="./public/icons/hero-banner.svg" alt="InstaCollage Hero Banner" width="100%" />
 
-  # 📸 InstaCollage Studio & CarouselVault
+  # 📸 InstaCollage — Instagram Posts & Carousels to Ready Collages in 1 Click
   
-  **State-of-the-Art Instagram Carousel Unpacker & High-DPI HTML5 Canvas Collage Suite**
+  **Turn any Instagram post or multi-slide carousel into stunning, ready-to-share high-DPI collages, moodboards, and filmstrips in one single click.**
   
   [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
   [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square)](https://nodejs.org)
@@ -30,11 +30,11 @@
 
 ---
 
-## 🌟 What is InstaCollage Studio?
+## 🌟 What is InstaCollage?
 
-**InstaCollage Studio** is an open-source, production-grade Progressive Web App (PWA) and backend API built to unpack every individual high-resolution photo and video from public **Instagram Carousel** posts and transform them into breathtaking, ultra-customizable photo collages, moodboards, and cinematic filmstrips in real time.
+**InstaCollage** is an open-source, production-grade Progressive Web App (PWA) and backend API built to unpack every individual high-resolution photo and video from public **Instagram Carousel & Post** links and transform them into breathtaking, ultra-customizable photo collages, polaroid moodboards, and cinematic filmstrips in real time.
 
-Built with **HTML5 Canvas 2D API**, **Vanilla ES6+ JavaScript**, **IndexedDB persistence**, and an **SSRF-hardened media proxy**, InstaCollage Studio delivers instantaneous client-side rendering with zero browser canvas tainting, zero loss of fidelity, and zero cropping.
+Built with **HTML5 Canvas 2D API**, **Vanilla ES6+ JavaScript**, **IndexedDB persistence**, and an **SSRF-hardened media proxy**, InstaCollage delivers instantaneous client-side rendering with zero browser canvas tainting, zero loss of fidelity, and zero cropping.
 
 ---
 
@@ -74,8 +74,8 @@ Built with **HTML5 Canvas 2D API**, **Vanilla ES6+ JavaScript**, **IndexedDB per
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/mahmoud-madi/instacollage-studio.git
-cd instacollage-studio
+git clone https://github.com/mahmoud-madi/instagram-carousel-to-collage.git
+cd instagram-carousel-to-collage
 npm install
 ```
 
