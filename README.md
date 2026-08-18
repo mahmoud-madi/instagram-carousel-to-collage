@@ -55,6 +55,35 @@ Built with **HTML5 Canvas 2D API**, **Vanilla ES6+ JavaScript**, **IndexedDB per
 
 ---
 
+## 📸 Visual Showcase
+
+<div align="center">
+  <h3>✨ Responsive Matrix Grid & Studio Interface</h3>
+  <img src="./public/screenshots/grid-matrix-preview.jpg" alt="InstaCollage Grid Matrix Preview" width="100%" />
+  <br/><br/>
+  
+  <table width="100%">
+    <tr>
+      <td width="50%" align="center">
+        <h4>🎞️ Cinema 35mm Filmstrip Mode</h4>
+        <img src="./public/screenshots/cinema-filmstrip-preview.jpg" alt="Cinema Filmstrip Mode" width="100%" />
+      </td>
+      <td width="50%" align="center">
+        <h4>📷 Polaroid Scrapbook Mode</h4>
+        <img src="./public/screenshots/polaroid-scrapbook-preview.jpg" alt="Polaroid Scrapbook Mode" width="100%" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <h4>ℹ️ About Studio & Developer Info</h4>
+        <img src="./public/screenshots/about-modal-preview.jpg" alt="About Studio Modal" width="70%" />
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 🎭 Artistic Layout Modes
 
 | Mode | Visual Style | Best Used For |
